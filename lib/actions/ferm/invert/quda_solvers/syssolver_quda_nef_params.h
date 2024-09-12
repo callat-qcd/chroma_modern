@@ -77,7 +77,7 @@ namespace Chroma
     Real RsdToleranceFactor;
     bool tuneDslashP;
     bool innerParamsP;
-	
+  
     // GCR Specific params
     // Params for the preconditioner
     Handle<GCRInnerSolverParams> innerParams;
@@ -94,7 +94,7 @@ namespace Chroma
   void read(XMLReader& xml, const std::string& path, SysSolverQUDANEFParams& p);
 
   void write(XMLWriter& xml, const std::string& path, 
-	     const SysSolverQUDANEFParams& param);
+             const SysSolverQUDANEFParams& param);
 
 
 

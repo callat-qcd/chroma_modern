@@ -10,7 +10,7 @@ using namespace QDP;
 namespace Chroma {
 
   SysSolverQUDANEFParams::SysSolverQUDANEFParams(XMLReader& xml, 
-						       const std::string& path)
+                                                 const std::string& path)
   {
     XMLReader paramtop(xml, path);
 
@@ -80,10 +80,10 @@ namespace Chroma {
     }
 
     if( paramtop.count("RsdToleranceFactor") > 0 ) { 
-       read(paramtop, "RsdToleranceFactor", RsdToleranceFactor);
+      read(paramtop, "RsdToleranceFactor", RsdToleranceFactor);
     }
     else { 
-       RsdToleranceFactor = Real(10); // Tolerate an order of magnitude difference by default.
+      RsdToleranceFactor = Real(10); // Tolerate an order of magnitude difference by default.
     }
 
     if( paramtop.count("AutotuneDslash") > 0 ) { 
@@ -122,29 +122,29 @@ namespace Chroma {
     }
    
     if ( paramtop.count("DoCGNR")  > 0 ) { 
-       read(paramtop, "DoCGNR", cgnrP);
+      read(paramtop, "DoCGNR", cgnrP);
     }
     else { 
-	cgnrP = false ; // Do CGNE by default
+      cgnrP = false ; // Do CGNE by default
     }
 
     if( paramtop.count("Pipeline") > 0 ) { 
-       read(paramtop, "Pipeline", Pipeline);
+      read(paramtop, "Pipeline", Pipeline);
     }
     else { 
-	Pipeline = 1;
+      Pipeline = 0; //For CG solvers, this should be set to 0, not 1
     }
   }
 
   void read(XMLReader& xml, const std::string& path, 
-	    SysSolverQUDANEFParams& p)
+            SysSolverQUDANEFParams& p)
   {
     SysSolverQUDANEFParams tmp(xml, path);
     p = tmp;
   }
 
   void write(XMLWriter& xml, const std::string& path, 
-	     const SysSolverQUDANEFParams& p) {
+             const SysSolverQUDANEFParams& p) {
     push(xml, path);
     write(xml, "MaxIter", p.MaxIter);
     write(xml, "RsdTarget", p.RsdTarget);
